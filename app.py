@@ -1,10 +1,11 @@
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 @app.route('/')
 def index():
-    return app.send_static_file('index.html')
+    return send_from_directory('static', 'index.html')
+
 
 @app.route('/submit', methods=['POST'])
 def submit_form():
